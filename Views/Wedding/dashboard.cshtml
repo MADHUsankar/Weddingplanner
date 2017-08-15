@@ -1,0 +1,47 @@
+<p> wedding page</p>
+<a  asp-controller="User"  asp-action="logout"><button>Logout</button></a>
+<!-- @ViewBag.Allweddingrecords -->
+<table style="width:75%">
+  <tr>
+    <th>Wedding</th>
+    <th>WeddingDate</th>
+    <th>Weddingaddress</th>
+    <th> Guests </th>
+    <th>Action</th>
+  </tr>
+ 
+      @foreach ( var wed in @ViewBag.Allweddingrecords){
+    <tr>
+    <td><a href = "wedding/show/@wed.WeddingId">@wed.SpouseOne and @wed.SpouseTwo</a></td>
+    <td>@wed.WeddingDate.ToString("MMMM dd yyyy")</td>
+     <td>@wed.Weddingaddress</td>
+     <td> @wed.Invitationsinfo.Count </td>
+    @{bool attending = false;}
+     @if(@wed.UserId ==  @ViewBag.curruser ){
+             <td> <a href="wedding/deletewed/@wed.WeddingId">Delete</a></td>
+      }  
+      else
+      {
+          @foreach (var a in @wed.Invitationsinfo)
+          {
+              if(@ViewBag.curruser == @a.UserId ){
+                 
+                  attending = true;
+              }
+             
+              
+          }
+          @if(attending){
+                 <td> <a href = "wedding/notattending/@wed.WeddingId">Un-RSVP</a></td>
+              }
+              else{
+                <td> <a href = "wedding/attending/@wed.WeddingId">RSVP</a></td>
+              }
+      }
+
+      </tr>
+      }  
+</table>
+   
+ 
+<a href="/addwedding"><button>New Wedding</button></a>

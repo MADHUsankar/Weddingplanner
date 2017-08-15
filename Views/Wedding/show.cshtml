@@ -1,0 +1,13 @@
+<html>
+    <h3>@ViewBag.weddingrecord.SpouseOne and  @ViewBag.weddingrecord.SpouseTwo Wedding</h3>
+    <h4> Date: @ViewBag.weddingrecord.WeddingDate.ToString("MMMM dd yyyy")</h4>
+    <h4> Guests: </h4>
+    @foreach (var a in @ViewBag.invitationrecords){
+        <p> @a.Userrecord.FirstName </p>
+    }
+    <div class="col-sm-6">
+            <iframe width="300" height="250" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyCE5rc8HduPNe5ZN5B6yLPQYMPmZ1jYTcw
+    &q=@ViewBag.weddingrecord.Weddingaddress.Replace(" ", "+")" allowfullscreen>
+            </iframe>
+        </div>
+</html>

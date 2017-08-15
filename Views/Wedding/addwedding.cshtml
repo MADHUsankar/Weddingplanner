@@ -1,0 +1,26 @@
+
+<h1> PLan Your Wedding</h1>
+<form action="addwedding" method="post">
+      <p> Wedder One: <input type="text" name="SpouseOne"/></p>
+      <p> Wedder Two: <input type="text" name="SpouseTwo"/></p>
+      <p> WeddingDate: <input type="Date" name="WeddingDate"/></p>   
+    <p> Wedding address: <input type="text" name="Weddingaddress"/></p>
+    <button type="submit">Create!</button>
+</form>
+<div>
+    @{
+        if (@ViewBag.status=="wedaddfail"){
+        foreach(var error in ViewBag.errors)
+            {
+                if(@error.Errors.Count > 0)
+                {
+                    <p>@error.Errors[0].ErrorMessage</p>
+                }
+            }
+    
+        }
+if (@ViewBag.status=="wedaddfaildate"){
+    @ViewBag.errors
+}
+        
+    }
