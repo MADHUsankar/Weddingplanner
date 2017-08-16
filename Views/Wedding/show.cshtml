@@ -1,4 +1,6 @@
 <html>
+    <a  asp-controller="Wedding"  asp-action="Dashboard"><button>Dashboard</button></a>
+<a  asp-controller="User"  asp-action="logout"><button>Logout</button></a>
     <h3>@ViewBag.weddingrecord.SpouseOne and  @ViewBag.weddingrecord.SpouseTwo Wedding</h3>
     <h4> Date: @ViewBag.weddingrecord.WeddingDate.ToString("MMMM dd yyyy")</h4>
     <h4> Guests: </h4>
